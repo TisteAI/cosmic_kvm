@@ -1,0 +1,17 @@
+[package]
+name = "cosmic-kvm-protocol"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Network protocol for COSMIC KVM sharing"
+
+[dependencies]
+serde = { workspace = true }
+bincode = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Protocol versioning
+semver = "1.0"

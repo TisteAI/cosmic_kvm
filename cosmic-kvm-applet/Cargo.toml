@@ -1,0 +1,29 @@
+[package]
+name = "cosmic-kvm-applet"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "COSMIC panel applet for KVM sharing"
+
+[[bin]]
+name = "cosmic-kvm-applet"
+path = "src/main.rs"
+
+[dependencies]
+cosmic-kvm-protocol = { path = "../cosmic-kvm-protocol" }
+libcosmic = { workspace = true }
+cosmic-config = { workspace = true }
+
+tokio = { workspace = true }
+serde = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+
+# D-Bus communication
+zbus = { workspace = true }
+
+# Panel applet framework
+# TODO: Re-enable when implementing applet
+# cosmic-panel-config = { git = "https://github.com/pop-os/cosmic-applets.git" }

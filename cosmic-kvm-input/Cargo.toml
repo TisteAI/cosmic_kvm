@@ -1,0 +1,27 @@
+[package]
+name = "cosmic-kvm-input"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Input abstraction layer for COSMIC KVM sharing"
+
+[dependencies]
+cosmic-kvm-protocol = { path = "../cosmic-kvm-protocol" }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+
+# Wayland support (optional)
+wayland-client = { workspace = true, optional = true }
+wayland-protocols = { workspace = true, optional = true }
+
+# uinput support (optional)
+evdev = { workspace = true, optional = true }
+nix = { version = "0.29", features = ["user"], optional = true }
+
+[features]
+default = ["uinput"]
+wayland = ["wayland-client", "wayland-protocols"]
+uinput = ["evdev", "nix"]

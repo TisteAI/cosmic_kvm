@@ -1,0 +1,46 @@
+[package]
+name = "cosmic-kvm-daemon"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Background service for COSMIC KVM sharing"
+
+[[bin]]
+name = "cosmic-kvm-daemon"
+path = "src/main.rs"
+
+[dependencies]
+cosmic-kvm-protocol = { path = "../cosmic-kvm-protocol" }
+cosmic-kvm-input = { path = "../cosmic-kvm-input" }
+cosmic-config = { workspace = true }
+
+tokio = { workspace = true }
+tokio-util = { workspace = true }
+tokio-rustls = { workspace = true }
+rustls = { workspace = true }
+webpki-roots = { workspace = true }
+
+serde = { workspace = true }
+bincode = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# Service discovery
+mdns-sd = { workspace = true }
+
+# D-Bus interface
+zbus = { workspace = true }
+
+# Command-line arguments
+clap = { version = "4.5", features = ["derive"] }
+
+# Configuration
+dirs = "5.0"
+toml = "0.8"
+uuid = { version = "1.10", features = ["v4", "serde"] }
+hostname = "0.4"

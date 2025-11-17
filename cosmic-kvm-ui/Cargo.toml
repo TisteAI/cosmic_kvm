@@ -1,0 +1,34 @@
+[package]
+name = "cosmic-kvm-ui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "COSMIC native UI for KVM sharing management"
+
+[[bin]]
+name = "cosmic-kvm"
+path = "src/main.rs"
+
+[dependencies]
+cosmic-kvm-protocol = { path = "../cosmic-kvm-protocol" }
+libcosmic = { workspace = true, features = ["winit", "tokio"] }
+cosmic-config = { workspace = true }
+cosmic-theme = { workspace = true }
+
+tokio = { workspace = true }
+serde = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+# D-Bus communication with daemon
+zbus = { workspace = true }
+
+# UI components
+iced = { git = "https://github.com/pop-os/iced.git" }
+iced_core = { git = "https://github.com/pop-os/iced.git" }
+
+# QR code generation for device pairing
+qrcode = "0.14"
