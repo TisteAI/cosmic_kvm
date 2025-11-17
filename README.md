@@ -32,11 +32,13 @@ COSMIC KVM enables you to control multiple computers with a single keyboard and 
 - Protocol handshake with authentication
 - mDNS service discovery
 - Configuration management
+- **GUI application**: Functional libcosmic UI for server/client management
 - Comprehensive documentation
 
 🚧 **In Progress**:
 - TLS encryption (currently uses plain TCP)
-- UI application (basic implementation)
+- Modifier state tracking for keyboard
+- Mouse movement batching
 
 📋 **Planned**:
 - TLS certificate management and encryption
@@ -193,18 +195,21 @@ fingerprint = "SHA256:..."
 input_backend = "Auto"  # Auto, UInput, or Wayland
 ```
 
-### Using the UI
+### Using the GUI
 
 ```bash
 # Launch the COSMIC native UI
 cosmic-kvm
 ```
 
-The UI provides:
-- Device discovery and connection management
-- Trust management for automatic connections
-- Status monitoring
-- Configuration editor
+The graphical interface provides:
+- **Server Mode**: Start/stop KVM server with one click
+- **Client Mode**: Connect to remote servers by entering IP:port
+- **Visual Status**: Clear indication of connection state
+- **Process Management**: Automatically launches and manages the daemon
+- **Native COSMIC Integration**: Uses libcosmic for a consistent UI
+
+The UI automatically finds `cosmic-kvm-daemon` in your PATH or uses the cargo build directory.
 
 ## Development
 
