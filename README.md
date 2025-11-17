@@ -1,9 +1,9 @@
 # COSMIC KVM
 
-> **⚠️ Project Status**: Early Development / Research Phase
+> **✅ Project Status**: Functional Prototype
 >
-> This project is in the initial development stage. Core functionality is being implemented.
-> Not ready for production use.
+> Server and client modes are now WORKING! You can share keyboard and mouse between Linux machines.
+> Currently uses plain TCP (TLS planned). Requires `/dev/uinput` access on client machines.
 
 A Wayland-native keyboard, video, and mouse (KVM) sharing solution designed specifically for COSMIC Desktop. Share your keyboard and mouse seamlessly across multiple Linux machines running COSMIC, with future support planned for Windows and macOS.
 
@@ -24,20 +24,22 @@ COSMIC KVM enables you to control multiple computers with a single keyboard and 
 
 ### Current Implementation Status
 
-✅ **Completed**:
+✅ **Completed & Working**:
 - Protocol definition and message serialization
 - Input abstraction layer with uinput backend
-- Basic daemon structure with configuration management
+- **Server mode**: Input capture from evdev, multi-client support
+- **Client mode**: Event reception and injection via uinput
+- Protocol handshake with authentication
 - mDNS service discovery
-- Project architecture and documentation
+- Configuration management
+- Comprehensive documentation
 
 🚧 **In Progress**:
-- TLS networking layer
-- Full server/client implementation
-- Input event capture
-- UI application
+- TLS encryption (currently uses plain TCP)
+- UI application (basic implementation)
 
 📋 **Planned**:
+- TLS certificate management and encryption
 - Wayland libei backend integration
 - Clipboard sharing
 - Display configuration synchronization
