@@ -6,6 +6,8 @@
 //! - Service discovery via mDNS
 //! - D-Bus interface for UI control
 
+mod capture;
+mod client;
 mod config;
 mod discovery;
 mod network;
@@ -77,12 +79,13 @@ async fn main() -> Result<()> {
             server.run().await?;
         }
         Mode::Client => {
-            if let Some(addr) = args.connect.or(config.default_server) {
-                tracing::info!("Starting in client mode, connecting to {}", addr);
-                // TODO: Implement client mode
-                anyhow::bail!("Client mode not yet implemented");
+            let addr = args.connect.or_else(|| config.default_server.clone());
+            if let Some(server_addr) = addr {
+                tracing::info!("Starting in client mode, connecting to {}", server_addr);
+                let client = client::Client::new(config, server_addr);
+                client.run().await?;
             } else {
-                anyhow::bail!("Client mode requires --connect address");
+                anyhow::bail!("Client mode requires --connect address or default_server in config");
             }
         }
     }

@@ -44,3 +44,6 @@ dirs = "5.0"
 toml = "0.8"
 uuid = { version = "1.10", features = ["v4", "serde"] }
 hostname = "0.4"
+
+# Input capture
+evdev = { workspace = true }
